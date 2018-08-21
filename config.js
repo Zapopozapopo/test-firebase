@@ -1,5 +1,5 @@
 export const url = {
-    protocol: 'http',
-    host: '192.168.0.105',
+    protocol: 'https',
+    host: 'us-central1-fir-test-80657.cloudfunctions.net/app',
     port: 3000,
 };

@@ -5,16 +5,16 @@ axios.defaults.headers.common = {
     'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
 };
 
-const baseURL = `${url.protocol}://${url.host}:${url.port}`;
+const baseURL = `${url.protocol}://${url.host}`;
 
 const instance = axios.create({
     baseURL
 });
 
 export const pushTodo = (todo) =>{
-  return instance.post('/api/todo',{todo})
+  return instance.post('/addTodo',{todo})
 };
 
 export const fetchTodoList = () =>{
-    return instance.get('/api/todos')
+    return instance.get('/getTodoList')
 };
