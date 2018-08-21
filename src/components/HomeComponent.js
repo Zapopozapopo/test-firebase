@@ -1,4 +1,7 @@
 import React, {Component} from 'react'
+import './HomeComponent.scss'
+import TodoForm from "./TodoForm/TodoForm";
+import TodoList from "./TodoList/TodoList";
 
 export default class HomeComponent extends Component {
 
@@ -8,7 +11,19 @@ export default class HomeComponent extends Component {
 
     render() {
         return (
-            <div></div>
+            <div className='container'>
+                <div className='content'>
+                    <div className='card'>
+                        <div className='card-title'>
+                            Todo List
+                        </div>
+                        <div className='card-body'>
+                            <TodoForm onSubmit={this.props.addTodo}/>
+                            <TodoList todoList={this.props.todoList}/>
+                        </div>
+                    </div>
+                </div>
+            </div>
         );
     }
 }
