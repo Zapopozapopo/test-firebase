@@ -20,6 +20,7 @@ export default class HomeComponent extends Component {
                         <div className='card-body'>
                             <TodoForm onSubmit={this.props.addTodo}/>
                             <TodoList todoList={this.props.todoList}/>
+                            {this.props.isFetching?<div className="lds-dual-ring"/>:null}
                         </div>
                     </div>
                 </div>

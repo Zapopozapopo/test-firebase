@@ -6,19 +6,26 @@ class HomeContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            todoList: []
+            todoList: [],
+            isFetching:false
         };
+    }
+
+    componentWillMount(){
         this.getTodoList();
     }
 
     getTodoList = () => {
+        this.setState({isFetching:true});
         fetchTodoList()
-            .then(res => {
-                Object.keys(res.data).map((key) => {
+            .then(async res => {
+                await Object.keys(res.data).map((key) => {
                     this.setState({todoList: [...this.state.todoList, res.data[key].stringValue]})
                 });
+                this.setState({isFetching:false});
             })
             .catch(err => {
+                this.setState({isFetching:false});
                 alert(err)
             })
     };
@@ -35,7 +42,7 @@ class HomeContainer extends Component {
 
     render() {
         return (
-            <HomeComponent addTodo={this.addTodo} todoList={this.state.todoList.reverse()}/>
+            <HomeComponent isFetching={this.state.isFetching} addTodo={this.addTodo} todoList={this.state.todoList.reverse()}/>
         );
     }
 }
