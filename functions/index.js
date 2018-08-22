@@ -14,7 +14,6 @@ app.post('/addTodo', (req, res) => {
             res.status(200).send()
         })
         .catch((err) => {
-            console.log(err);
             res.status(500).send(err);
         });
 });
@@ -23,9 +22,7 @@ app.get('/getTodoList',(req,res)=>{
     firebaseService.getTodos()
         .then((data) => {
             res.status(200).send(data._fieldsProto)
-
         }).catch((err) => {
-        console.log(err);
         res.status(500).send(err);
     })
 });
